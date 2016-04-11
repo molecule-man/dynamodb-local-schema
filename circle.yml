@@ -5,6 +5,10 @@ machine:
 dependencies:
   override:
     - sudo pip install --upgrade awscli
+    - aws configure set aws_access_key_id ''
+    - aws configure set aws_secret_access_key ''
+    - aws configure set default.region us-west-2
+
     - docker info
     - make build
     - docker images

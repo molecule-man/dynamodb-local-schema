@@ -15,7 +15,7 @@ docker run -d \
     $DYNAMODB_IMG \
     -sharedDb -dbPath $DB_DATA_PATH_CNT
 
-aws --region eu-west-1 dynamodb create-table \
+aws dynamodb create-table \
     --endpoint-url http://localhost:$PORT \
     --table-name local \
     --attribute-definitions AttributeName=Id,AttributeType=S \
