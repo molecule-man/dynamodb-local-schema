@@ -5,7 +5,8 @@ DYNAMODB_IMG=$2
 
 PORT=$(shuf -i 2000-65000 -n 1)
 CNT_NAME="dynamo-$RANDOM"
-DB_DATA_PATH_HOST=$(mktemp -d)
+WORKING_DIR=$(mktemp -d)
+DB_DATA_PATH_HOST=$(mktemp -d -p $WORKING_DIR)
 DB_DATA_PATH_CNT=/data
 
 docker run -d \
@@ -35,4 +36,4 @@ echo "VOLUME $DB_DATA_PATH_CNT" >> $dockerfile
 
 docker build -f $dockerfile -t $TAG $BUILD_DIR
 
-rm -rf $DB_DATA_PATH_HOST
+rm -rf $WORKING_DIR
