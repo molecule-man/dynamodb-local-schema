@@ -4,10 +4,10 @@ machine:
 
 dependencies:
   override:
+    - sudo pip install --upgrade awscli
     - docker info
     - make build
     - docker images
-    - sudo pip install --upgrade awscli
 
 checkout:
     post:
